@@ -1,14 +1,7 @@
 import 'dart:math';
-import 'package:diceapp_animations/slow_animation.dart';
 import 'package:flutter/material.dart';
 
-import 'multia_animations.dart';
-
-void main() {
-  runApp(Multiple());
-}
-
-class MyApp1 extends StatelessWidget {
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -40,7 +33,7 @@ class _DiceScreenState extends State<DiceScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.amberAccent,
+      backgroundColor: Colors.brown,
       appBar: AppBar(
         title: Text('Dice Roller'),
       ),
@@ -56,6 +49,18 @@ class _DiceScreenState extends State<DiceScreen> {
                   'images/dice$_dice1Value.png',
                   height: 150,
                 ),
+                flightShuttleBuilder: (
+                    BuildContext flightContext,
+                    Animation<double> animation,
+                    HeroFlightDirection flightDirection,
+                    BuildContext fromHeroContext,
+                    BuildContext toHeroContext,
+                    ) {
+                  return RotationTransition(
+                    turns: animation,
+                    child: toHeroContext.widget,
+                  );
+                },
               ),
             ),
             SizedBox(
@@ -69,6 +74,18 @@ class _DiceScreenState extends State<DiceScreen> {
                   'images/dice$_dice2Value.png',
                   height: 150,
                 ),
+                flightShuttleBuilder: (
+                    BuildContext flightContext,
+                    Animation<double> animation,
+                    HeroFlightDirection flightDirection,
+                    BuildContext fromHeroContext,
+                    BuildContext toHeroContext,
+                    ) {
+                  return RotationTransition(
+                    turns: animation,
+                    child: toHeroContext.widget,
+                  );
+                },
               ),
             ),
           ],
